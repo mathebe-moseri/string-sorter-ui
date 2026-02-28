@@ -30,7 +30,7 @@
   {{ error }} 
 </div>
 
-<pre>
+<pre *ngIf="response !== null && response !== undefined">
 Validation Result:
 {{ response | json }}
 </pre>
