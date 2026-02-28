@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ValidationService } from '../../service/validation.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-api-test',
@@ -17,16 +19,25 @@ export class ApiTestComponent {
   loading = false; 
   error: string | null = null;
 
-  onSubmit() {
-  console.log('submit', this.email, this.endpointUrl);
+  constructor(private validationService: ValidationService) {}
 
-  this.loading = true;
-  this.error = null;
-  this.response = null;
+    onSubmit() {
+    console.log('submit', this.email, this.endpointUrl);
 
-  setTimeout(() => { 
-    this.loading = false;
-    this.response = { message: 'Fake success response' }; 
-    }, 1500
-  );}
+    this.loading = true;
+    this.error = null;
+    this.response = null;
+
+    this.validationService.validate(this.email, this.endpointUrl)
+      .subscribe({
+        next: (res) => {
+          this.response = res;
+          this.loading = false;
+        }, 
+        error: (err) => {
+          this.error = 'Validation failed.';
+          console.error(err);
+          this.loading = false; } }
+      );
+  }
 }
