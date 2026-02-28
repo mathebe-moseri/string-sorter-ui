@@ -3,14 +3,14 @@
 <form (ngSubmit)="onSubmit()">
   <div>
     <label>Email:&emsp;</label>
-    <input type="email" placeholder="Enter your email" />
+    <input type="email" [(ngModel)]="email" name="email" required placeholder="Enter your email" />
   </div>
 
   <br />
 
   <div>
     <label>Endpoint URL:&emsp;</label>
-    <input type="text" placeholder="Enter API URL to test" />
+    <input type="text" [(ngModel)]="endpointUrl" name="endpointUrl" required placeholder="Enter API URL to test" />
   </div>
 
   <br />

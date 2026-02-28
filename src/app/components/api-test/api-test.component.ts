@@ -10,7 +10,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class ApiTestComponent {
 
+  email: string = '';
+  endpointUrl: string = '';
+
   onSubmit() {
-  console.log('submit');
+  console.log('submit', this.email, this.endpointUrl);
 }
 }
