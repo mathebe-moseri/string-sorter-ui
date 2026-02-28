@@ -22,7 +22,7 @@ export class ApiTestComponent {
   constructor(private validationService: ValidationService) {}
 
     onSubmit() {
-    console.log('submit', this.email, this.endpointUrl);
+    // console.log('submit', this.email, this.endpointUrl);
 
     this.loading = true;
     this.error = null;
