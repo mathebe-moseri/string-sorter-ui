@@ -1,37 +1,49 @@
-<h2>API Validation Test</h2>
+<div class="flex flex-col justify-center items-center  min-h-screen">
+  <div class="bg-green-200 text-lg font-semibold p-10 border border-white shadow-lg rounded-lg ">
 
-<form (ngSubmit)="onSubmit()">
-  <div>
-    <label>Email:&emsp;</label>
-    <input type="email" [(ngModel)]="email" name="email" required placeholder="Enter your email" />
+    <h2 class="text-gray-500 font-bold mb-10 text-3xl">
+      API Validation Test
+    </h2>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="p-2">
+        <label>Email:&emsp;</label>
+        <input type="email" [(ngModel)]="email" name="email" required placeholder="Enter your email" class="rounded p-2" />
+      </div>
+
+      <br />
+
+      <div class="p-2">
+        <label>Endpoint URL:&emsp;</label>
+        <input type="text" [(ngModel)]="endpointUrl" name="endpointUrl" required placeholder="Enter API URL to test" class="rounded p-2"/>
+      </div>
+
+      <button type="submit" class="bg-gray-600 p-3 font-bold rounded-full text-white text-2xl mt-10 hover:bg-green-600">
+        Validate
+      </button>
+
+    </form>
+
+    <div *ngIf="response || error" class="bg-white shadow-xl rounded-xl p-4 mt-5 text-gray-500 font-semibold">
+      <div *ngIf="error" class="text-red-500 font-semibold">
+        {{ error }}
+      </div>
+    
+      <div *ngIf="response !== null && response !== undefined">
+        <h3 class="text-gray-700 font-bold">
+          Validation Result:
+        </h3>
+
+        <pre class="text-sm">
+          {{ response | json }}
+        </pre>
+      </div>
+    </div>
+    
+    <div *ngIf="loading">
+      Validating...
+    </div>
+
   </div>
-
-  <br />
-
-  <div>
-    <label>Endpoint URL:&emsp;</label>
-    <input type="text" [(ngModel)]="endpointUrl" name="endpointUrl" required placeholder="Enter API URL to test" />
-  </div>
-
-  <br />
-
-  <button type="submit">Validate</button>
-</form>
-
-<hr />
-<hr />
-
-<h3>Response:</h3>
-
-<div *ngIf="loading">
-  Validating...
-</div>
-<div *ngIf="error" style="color:red;">
-  {{ error }} 
 </div>
 
-<pre *ngIf="response !== null && response !== undefined">
-Validation Result:
-{{ response | json }}
-</pre>
- 
