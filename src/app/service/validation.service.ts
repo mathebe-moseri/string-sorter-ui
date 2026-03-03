@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ValidationService {
 
-  private readonly validationEndpoint = 'https://stringsorterapi-evdhd7c2bshwf3e4.westeurope-01.azurewebsites.net/api/StringSorter/validate-endpoint';  
+  private readonly validationEndpoint = 'https://stringsorterapi-evdhd7c2bshwf3e4.westeurope-01.azurewebsites.net/api/Validation/validate-endpoint';  
 
   constructor(private http: HttpClient) {}
 
